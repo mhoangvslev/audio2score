@@ -83,7 +83,7 @@ def process_sample(q, samples, args, labels):
             kern.save(chunk_path)
 
             # Fix ties with tiefix command
-            process = subprocess.run(['tiefix', chunk_path], capture_output=True, encoding='iso-8859-1')
+            process = subprocess.run(['tiefix', chunk_path], encoding='iso-8859-1', stdout=subprocess.PIPE)
             if (process.returncode != 0):
                 print(f"tiefix error={process.returncode} on {chunk_path}")
                 print(process.stdout)
